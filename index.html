@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TimeSheet</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script defer>
+        function toSubmit() {
+            
+            var name = document.getElementById("name").value;
+            var hourly_wage = document.getElementById("hwage").value;
+            var week = document.getElementById("week").value;
+            var hour = document.getElementById("hr").value;
+            
+            if (name.length === 0 || hourly_wage < 0 || week < 0 || hour < 0) {
+                alert("Please enter a valid input");
+                return false;
+            }
+            
+            localStorage.setItem("name", name);
+            localStorage.setItem("hwage", hourly_wage);
+            localStorage.setItem("week", week);
+            localStorage.setItem("hr", hour);
+            return true;
+            
+        }
+    </script>
+</head>
+<body>
+
+<div class="container">
+    <div class="jumbotron">
+        <h1>Time Sheet</h1>      
+        <p>This page calculates total pay of the week for hourly employees~!~</p>
+    </div>    
+</div>
+    
+<div class="container">
+    <h2>Your Information</h2>
+    <form class="form-horizontal" onsubmit="toSubmit();" action="confirm.html">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="name">Name:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="wage">Hourly Wage:</label>
+            <div class="col-sm-10">          
+                <input type="number" class="form-control" id="hwage" placeholder="Enter hourly wage" name="hwage">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="week">Week:</label>
+            <div class="col-sm-10">
+                <input type="number" class="form-control" id="week" placeholder="Enter week" name="week">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="hour">Hours:</label>
+            <div class="col-sm-10">
+                <input type="number" class="form-control" id="hr" placeholder="Enter hours" name="hour">
+            </div>
+        </div>
+        <div class="form-group">        
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
